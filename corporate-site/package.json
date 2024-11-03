@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "serve": "npx serve out -s",
+    "preview": "npm run build && (echo. > out/.nojekyll) && npm run serve"
   },
   "dependencies": {
     "next": "^14.2.16",
