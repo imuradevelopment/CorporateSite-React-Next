@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
-import { Providers } from './providers'
 import './globals.css'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import { ThemeProvider } from '@/components/theme/ThemeProvider'
+import { Header } from '@/components/organisms/Header/Header'
+import { Footer } from '@/components/organisms/Footer/Footer'
 
 export const metadata: Metadata = {
   title: 'Corporate Site',
@@ -17,11 +17,11 @@ export default function RootLayout({
   return (
     <html lang="ja" suppressHydrationWarning>
       <body className="min-h-screen flex flex-col">
-        <Providers>
+        <ThemeProvider>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="pt-16 flex-grow">{children}</main>
           <Footer />
-        </Providers>
+        </ThemeProvider>
       </body>
     </html>
   )
