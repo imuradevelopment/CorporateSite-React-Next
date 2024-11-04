@@ -1,67 +1,34 @@
-import type { Metadata } from "next";
-
-import { Inter } from "next/font/google";
-
-import "./globals.css";
-
-import Header from "@/components/Header";
-
-import Footer from "@/components/Footer";
-
-import { ThemeProvider } from "@/contexts/ThemeContext";
-
-
-
-const inter = Inter({ subsets: ["latin"] });
-
-
+import type { Metadata } from 'next'
+import { Providers } from '@/app/providers'
+import './globals.css'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 export const metadata: Metadata = {
-
-  title: "コーポレートサイト",
-
-  description: "会社の紹介サイト",
-
-};
-
-
+  title: 'Corporate Site',
+  description: 'Corporate website built with Next.js',
+}
 
 export default function RootLayout({
-
   children,
-
 }: {
-
-  children: React.ReactNode;
-
+  children: React.ReactNode
 }) {
-
   return (
-
-    <html lang="ja" className="dark">
-
-      <body className={`${inter.className} flex flex-col min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-white`}>
-
-        <ThemeProvider>
-
-          <Header />
-
-          <main className="flex-grow">
-
-            {children}
-
-          </main>
-
-          <Footer />
-
-        </ThemeProvider>
-
+    <html lang="ja" suppressHydrationWarning>
+      <body>
+        <Providers>
+          <div className="flex min-h-screen flex-col">
+            <Header />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </div>
+        </Providers>
       </body>
-
     </html>
-
-  );
-
+  )
 }
 
 

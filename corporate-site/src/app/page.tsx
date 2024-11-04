@@ -20,31 +20,51 @@ export default function Home() {
   ];
 
   return (
-    <div className="space-y-12">
+    <div>
       {/* ヒーローセクション */}
-      <section className="text-center py-20 bg-gray-50">
-        <h1 className="text-4xl font-bold mb-6">
-          ビジネスの成長をテクノロジーで加速する
-        </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          私たちは最新のテクノロジーを活用して、
-          お客様のビジネスの成長をサポートします。
-        </p>
+      <section className="relative py-20 md:py-32">
+        <div className="container">
+          <div className="mx-auto max-w-4xl text-center">
+            <h1 className="mb-8 text-4xl font-bold tracking-tight text-foreground md:text-6xl">
+              ビジネスの成長を<br className="hidden sm:inline" />
+              テクノロジーで加速する
+            </h1>
+            <p className="mb-12 text-lg text-muted-foreground md:text-xl">
+              私たちは最新のテクノロジーを活用して、<br className="hidden sm:inline" />
+              お客様のビジネスの成長をサポートします。
+            </p>
+            <div className="flex justify-center gap-4">
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center rounded-md bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+              >
+                お問い合わせ
+              </a>
+              <a
+                href="/services"
+                className="inline-flex items-center justify-center rounded-md border border-input bg-background px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              >
+                サービス一覧
+              </a>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* 特徴セクション */}
-      <section className="py-12">
-        <h2 className="text-3xl font-bold text-center mb-12">特徴</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {features.map((feature, index) => (
-            <div key={index} className="text-center p-6 bg-white rounded-lg shadow-lg">
-              <div className="text-blue-600 mb-4 flex justify-center">
-                {feature.icon}
+      <section className="border-t py-20">
+        <div className="container">
+          <div className="grid gap-8 md:grid-cols-3">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm"
+              >
+                <h3 className="mb-3 text-xl font-semibold">{feature.title}</h3>
+                <p className="text-muted-foreground">{feature.description}</p>
               </div>
-              <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-              <p className="text-gray-600">{feature.description}</p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </section>
     </div>
