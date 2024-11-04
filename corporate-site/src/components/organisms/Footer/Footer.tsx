@@ -17,26 +17,11 @@ export const Footer = () => {
   }
 
   return (
-    <footer className="border-t bg-background">
-      <div className="container py-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <FooterInfo
-            title="Corporate Site"
-            description="最新のテクノロジーで、ビジネスの課題を解決します。"
-          />
-          <FooterLinkGroup title="リンク" links={links.main} />
-          <FooterLinkGroup title="サービス" links={links.services} />
-          <FooterInfo
-            title="お問い合わせ"
-            address="〒000-0000 東京都千代田区..."
-            tel="03-0000-0000"
-          />
-        </div>
-        <div className="mt-8 pt-8 border-t text-center">
-          <Typography variant="small">
-            © {new Date().getFullYear()} Corporate Site. All rights reserved.
-          </Typography>
-        </div>
+    <footer className="border-t">
+      <div className="container flex h-14 items-center">
+        <p className="text-sm text-muted-foreground">
+          © {new Date().getFullYear()} Corporate Site. All rights reserved.
+        </p>
       </div>
     </footer>
   )

@@ -7,9 +7,9 @@ interface Props {
   children: ReactNode
 }
 
-export const ThemeProvider = ({ children }: Props) => {
+export function ThemeProvider({ children }: Props) {
   return (
-    <NextThemeProvider attribute="class">
+    <NextThemeProvider attribute="class" defaultTheme="system" enableSystem>
       {children}
     </NextThemeProvider>
   )
