@@ -1,27 +1,36 @@
 'use client'
 
-import { useColorScheme } from '@/hooks/useColorScheme'
-import { Moon, Sun } from 'lucide-react'
+import { useTheme } from '@/lib/theme/ThemeContext'
+import { Theme } from '@/lib/theme/types'
+import { Sun, Moon, Monitor } from 'lucide-react'
 
 export function ThemeToggle() {
-  const { theme, setTheme, mounted } = useColorScheme()
+  const { theme, setTheme } = useTheme()
 
-  if (!mounted) {
-    return <div className="w-9 h-9" aria-hidden="true" /> // スケルトンローディング用のプレースホルダー
+  const themeIcons = {
+    light: <Sun className="h-5 w-5" />,
+    dark: <Moon className="h-5 w-5" />,
+    system: <Monitor className="h-5 w-5" />
+  }
+
+  const handleThemeChange = (newTheme: Theme) => {
+    setTheme(newTheme)
   }
 
   return (
-    <button
-      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className="inline-flex h-9 w-9 items-center justify-center rounded-md border border-input bg-background p-2 text-muted-foreground hover:bg-accent hover:text-accent-foreground"
-      type="button"
-      aria-label={theme === 'dark' ? 'ライトモードに切り替え' : 'ダークモードに切り替え'}
-    >
-      <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-      <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-      <span className="sr-only">
-        {theme === 'dark' ? 'ライトモードに切り替え' : 'ダークモードに切り替え'}
-      </span>
-    </button>
+    <div className="flex items-center gap-2">
+      {Object.entries(themeIcons).map(([key, icon]) => (
+        <button
+          key={key}
+          onClick={() => handleThemeChange(key as Theme)}
+          className={`p-2 rounded-md ${
+            theme === key ? 'bg-gray-200 dark:bg-gray-700' : ''
+          }`}
+          aria-label={`Switch to ${key} theme`}
+        >
+          {icon}
+        </button>
+      ))}
+    </div>
   )
 } 
